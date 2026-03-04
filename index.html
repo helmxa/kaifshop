@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaifbox | Космический магазин</title>
+    <title>KaifShop | Космический донат магазин</title>
+    <!-- Шрифты и иконки -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Minecraft&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* СБРОС ВСЕХ СТИЛЕЙ */
+        /* СБРОС И ОСНОВНЫЕ СТИЛИ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #0a0c14;
+            --bg-card: rgba(15, 20, 30, 0.75);
+            --accent-cyan: #00ffff;
+            --accent-magenta: #ff00ff;
+            --accent-purple: #9b51e0;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --border-glow: rgba(0, 255, 255, 0.3);
+        }
+
         html, body {
             width: 100%;
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
-            background: #0a0c14;
-            color: white;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
         }
 
         body {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             position: relative;
+            overflow-x: hidden;
         }
 
         /* КОСМИЧЕСКИЙ ФОН */
@@ -42,18 +55,17 @@
             pointer-events: none;
         }
 
-        /* Орбы строго по центру */
         .glowing-orb {
             position: absolute;
             width: 150vh;
             height: 150vh;
-            background: radial-gradient(circle at 30% 50%, rgba(148, 0, 255, 0.6) 0%, rgba(0, 180, 255, 0.4) 30%, rgba(255, 0, 200, 0.3) 60%, transparent 80%);
+            background: radial-gradient(circle at 30% 50%, rgba(148, 0, 255, 0.5) 0%, rgba(0, 180, 255, 0.3) 30%, rgba(255, 0, 200, 0.2) 60%, transparent 80%);
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) translate(20%, -10%);
             filter: blur(80px);
-            animation: orbMove 25s ease-in-out infinite alternate;
+            animation: orbMove 30s ease-in-out infinite alternate;
             z-index: 0;
         }
 
@@ -61,33 +73,33 @@
             position: absolute;
             width: 120vh;
             height: 120vh;
-            background: radial-gradient(circle at 70% 60%, rgba(0, 255, 200, 0.5) 0%, rgba(0, 112, 255, 0.5) 35%, rgba(255, 70, 203, 0.4) 70%, transparent 90%);
+            background: radial-gradient(circle at 70% 60%, rgba(0, 255, 200, 0.4) 0%, rgba(0, 112, 255, 0.4) 35%, rgba(255, 70, 203, 0.3) 70%, transparent 90%);
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) translate(-20%, 10%);
             filter: blur(90px);
-            animation: orbMove2 22s ease-in-out infinite alternate;
+            animation: orbMove2 25s ease-in-out infinite alternate;
             z-index: 0;
         }
 
-        /* Звезды */
         .stars {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(2px 2px at 10px 10px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 20px 200px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(3px 3px at 100px 300px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 200px 400px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 300px 500px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 400px 600px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(3px 3px at 500px 700px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 600px 800px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 700px 900px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 800px 100px, #fff, rgba(0,0,0,0));
+            background-image: 
+                radial-gradient(2px 2px at 10px 10px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 20px 200px, #fff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 100px 300px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 200px 400px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 300px 500px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 400px 600px, #fff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 500px 700px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 600px 800px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 700px 900px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 800px 100px, #fff, rgba(0,0,0,0));
             background-repeat: repeat;
             background-size: 200px 200px;
             opacity: 0.5;
@@ -95,115 +107,278 @@
             z-index: 1;
         }
 
-        /* ОСНОВНОЙ КОНТЕНТ - ПРОСТОЕ ЦЕНТРИРОВАНИЕ */
-        .content {
+        /* НАВИГАЦИЯ */
+        .navbar {
+            position: relative;
+            z-index: 20;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 12, 20, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: white;
+            filter: drop-shadow(0 0 10px cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info span {
+            color: white;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 20px red;
+        }
+
+        /* ОСНОВНОЙ КОНТЕЙНЕР */
+        .main-container {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 1200px;
-            padding: 20px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            padding: 40px 20px;
+            flex: 1;
         }
 
-        /* КАРТОЧКА */
-        .glass-card {
-            background: rgba(15, 20, 30, 0.45);
+        /* ФОРМА РЕГИСТРАЦИИ UID */
+        .auth-section {
+            max-width: 500px;
+            margin: 0 auto 60px;
+            background: var(--bg-card);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 48px;
-            padding: 60px 50px;
+            border-radius: 32px;
+            padding: 40px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(150, 0, 255, 0.3);
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
             animation: borderGlow 6s linear infinite;
         }
 
-        /* ВСЕ ЭЛЕМЕНТЫ ПО ЦЕНТРУ */
-        .logo-wrapper {
+        .auth-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fff, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .uid-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label i {
+            color: cyan;
+        }
+
+        .form-group input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: cyan;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .uid-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 5px;
+        }
+
+        .auth-btn {
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .logo-icon {
-            font-size: 4rem;
-            color: white;
-            filter: drop-shadow(0 0 15px cyan) drop-shadow(0 0 30px magenta);
-            animation: iconGlow 3s ease-in-out infinite alternate;
+        .auth-btn:hover {
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.4), rgba(255, 0, 255, 0.4));
+            box-shadow: 0 0 30px cyan, 0 0 30px magenta;
+            transform: scale(1.02);
         }
 
-        .logo-text {
-            font-size: 4rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #ffe6f0, #c3e0ff, #e1beff, #b3fffc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .description {
+        .auth-switch {
             text-align: center;
-            margin-bottom: 50px;
+            margin-top: 20px;
+            color: var(--text-secondary);
         }
 
-        .description h2 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff, #d6c3ff, #a3d8ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(0,191,255,0.5);
+        .auth-switch span {
+            color: cyan;
+            cursor: pointer;
+            text-decoration: underline;
         }
 
-        .description p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* СЕТКА ПРЕИМУЩЕСТВ */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            padding: 30px 25px;
-            flex: 1 1 220px;
-            max-width: 260px;
-            text-align: center;
+        /* ИНФОРМАЦИЯ О СЕРВЕРЕ */
+        .server-info {
+            background: var(--bg-card);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .feature-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(157, 0, 255, 0.4), 0 0 30px #00ccff;
+        .server-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .feature-icon {
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, cyan, magenta);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ТОВАРЫ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2), 0 0 60px rgba(255, 0, 255, 0.2);
+        }
+
+        .product-card.popular::before {
+            content: "🔥 ПОПУЛЯРНОЕ";
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(45deg, cyan, magenta);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .product-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             background: linear-gradient(45deg, cyan, magenta);
@@ -213,63 +388,135 @@
             filter: drop-shadow(0 0 10px magenta);
         }
 
-        .feature-item h3 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: white;
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .feature-item p {
-            font-size: 1rem;
-            opacity: 0.8;
-            color: rgba(255, 255, 255, 0.9);
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        /* КНОПКА - ПРОСТОЕ ЦЕНТРИРОВАНИЕ */
-        .button-wrapper {
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
             display: flex;
-            justify-content: center;
-            width: 100%;
-            margin: 40px 0 20px;
+            align-items: center;
+            gap: 8px;
         }
 
-        .cta-button {
-            display: inline-flex;
+        .product-features i {
+            color: cyan;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, cyan, magenta);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 18px 58px;
-            border-radius: 60px;
-            background: rgba(20, 30, 45, 0.5);
+        }
+
+        .buy-btn:hover:not(:disabled) {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: cyan;
+            box-shadow: 0 0 30px cyan;
+        }
+
+        .buy-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ИСТОРИЯ ПОКУПОК */
+        .history-section {
+            margin-top: 60px;
+            background: var(--bg-card);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(255, 0, 200, 0.2);
-            animation: btnPulse 3s infinite alternate;
-            cursor: pointer;
-            border: none;
-            outline: none;
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .cta-button:hover {
-            background: rgba(40, 50, 80, 0.7);
-            box-shadow: 0 0 40px cyan, 0 0 80px magenta;
-            transform: scale(1.05);
+        .history-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* ФУТЕР - ТОЛЬКО НАШ ТЕКСТ */
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
+        .history-table {
             width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table th {
+            text-align: left;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .history-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-success {
+            color: #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* ФУТЕР */
+        footer {
+            position: relative;
+            z-index: 10;
+            background: rgba(10, 12, 20, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         /* АНИМАЦИИ */
@@ -282,110 +529,312 @@
             100% { transform: translate(-50%, -50%) translate(-10%, 15%) scale(1.3) rotate(-15deg); }
         }
         @keyframes twinkling {
-            0% { opacity: 0.4; }
-            100% { opacity: 0.8; }
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
         }
         @keyframes borderGlow {
             0% { box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(150,0,255,0.3); }
             50% { box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 60px rgba(0,200,255,0.5); }
             100% { box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(150,0,255,0.3); }
         }
-        @keyframes iconGlow {
-            0% { filter: drop-shadow(0 0 10px cyan) drop-shadow(0 0 20px magenta); }
-            100% { filter: drop-shadow(0 0 30px magenta) drop-shadow(0 0 50px cyan); }
-        }
-        @keyframes btnPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(255, 0, 200, 0.2); }
-            100% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), 0 0 80px rgba(255, 0, 200, 0.5); }
-        }
 
         /* АДАПТАЦИЯ */
-        @media (max-width: 700px) {
-            .glass-card {
-                padding: 40px 25px;
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
             }
-            .logo-text {
-                font-size: 3rem;
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            .logo-icon {
-                font-size: 3rem;
+            .server-stats {
+                flex-direction: column;
             }
-            .description h2 {
-                font-size: 1.8rem;
-            }
-            .cta-button {
-                font-size: 1.2rem;
-                padding: 15px 40px;
+            .products-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ФОН -->
+    <!-- КОСМИЧЕСКИЙ ФОН -->
     <div class="space-bg">
         <div class="glowing-orb"></div>
         <div class="glowing-orb-2"></div>
         <div class="stars"></div>
     </div>
 
-    <!-- КОНТЕНТ ПО ЦЕНТРУ -->
-    <div class="content">
-        <div class="glass-card">
-            <!-- Логотип -->
-            <div class="logo-wrapper">
-                <i class="fas fa-rocket logo-icon"></i>
-                <span class="logo-text">Kaifshop</span>
-                <i class="fas fa-star logo-icon" style="font-size: 3rem;"></i>
-            </div>
-            
-            <!-- Описание -->
-            <div class="description">
-                <h2>Космические переливания для вашего доната</h2>
-                <p>Откройте галактику возможностей с kaifbox. Приём пожертвований, управление донатерами, космическая аналитика и полная кастомизация. Всё это в окружении мерцающих туманностей.</p>
-            </div>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-cubes"></i>
+            <span>KaifShop</span>
+        </div>
+        <div class="nav-links">
+            <a href="#shop">Магазин</a>
+            <a href="#history">История</a>
+            <a href="#support">Поддержка</a>
+        </div>
+        <div class="user-info" id="userInfo" style="display: none;">
+            <i class="fas fa-user-astronaut"></i>
+            <span id="displayUid"></span>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+        </div>
+    </nav>
 
-            <!-- Преимущества -->
-            <div class="features">
-                <div class="feature-item">
-                    <i class="fas fa-meteor feature-icon"></i>
-                    <h3>Метеоритный</h3>
-                    <p>Мгновенные выплаты и автовыдачи подарков с космической скоростью.</p>
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-container">
+        <!-- ФОРМА РЕГИСТРАЦИИ UID -->
+        <div class="auth-section" id="authSection">
+            <h2>Вход на сервер</h2>
+            <div class="uid-form">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Ваш никнейм</label>
+                    <input type="text" id="uidInput" placeholder="Введите ваш Minecraft ник" maxlength="16">
+                    <div class="uid-hint">Только латинские буквы и цифры, до 16 символов</div>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-galaxy feature-icon"></i>
-                    <h3>Галактика</h3>
-                    <p>Сотни интеграций с играми и сервисами. Бесконечные просторы.</p>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email (для чеков)</label>
+                    <input type="email" id="emailInput" placeholder="example@mail.ru">
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-saturn feature-icon"></i>
-                    <h3>Сатурн API</h3>
-                    <p>Гибкое API для своих решений. Кольца данных вокруг вашего проекта.</p>
-                </div>
-            </div>
-
-            <!-- Кнопка -->
-            <div class="button-wrapper">
-                <button class="cta-button" onclick="alert('Пока ничего нету 🌌')">
-                    <i class="fas fa-rocket"></i> Запустить
+                <button class="auth-btn" onclick="registerUID()">
+                    <i class="fas fa-rocket"></i> Войти на сервер
                 </button>
+                <div class="auth-switch">
+                    Уже есть аккаунт? <span onclick="showLogin()">Войти</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ИНФОРМАЦИЯ О СЕРВЕРЕ (ПОКАЗЫВАЕТСЯ ПОСЛЕ ВХОДА) -->
+        <div id="serverContent" style="display: none;">
+            <div class="server-info">
+                <div class="server-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Работа сервера</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="onlinePlayers">0</div>
+                        <div class="stat-label">Игроков онлайн</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1.8-1.20</div>
+                        <div class="stat-label">Поддерживаемые версии</div>
+                    </div>
+                </div>
             </div>
 
-            <!-- ФУТЕР ТОЛЬКО С НУЖНЫМ ТЕКСТОМ -->
-            <footer>
-                <p>© 2026 KaifDev. Создано с помощью KaifDev.</p>
-            </footer>
+            <!-- ТОВАРЫ -->
+            <h2 style="font-size: 2.5rem; text-align: center; margin: 60px 0 20px; background: linear-gradient(135deg, #fff, cyan, magenta); -webkit-background-clip: text; background-clip: text; color: transparent;">Космические привилегии</h2>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Товары будут добавлены через JS -->
+            </div>
+
+            <!-- ИСТОРИЯ ПОКУПОК -->
+            <div class="history-section" id="history">
+                <h3><i class="fas fa-history" style="color: cyan;"></i> История ваших покупок</h3>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Товар</th>
+                            <th>Сумма</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTableBody">
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: rgba(255,255,255,0.3); padding: 40px;">У вас пока нет покупок</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- Убираем возможный левый текст через инлайн-скрипт -->
+    <!-- ФУТЕР -->
+    <footer>
+        <p>© 2026 MineDonate. Создано с помощью EasyDonate. Все права защищены.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Minecraft сервер с космическими привилегиями</p>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Удаляем все лишние текстовые узлы и элементы, которые могут быть слева
-            document.body.childNodes.forEach(node => {
-                if (node.nodeType === 3 && node.textContent.trim() !== '') {
-                    node.remove();
-                }
+        // Моковые данные для демонстрации
+        const products = [
+            {
+                id: 1,
+                title: "★ Донат Kaif ★",
+                description: "Начните своё путешествие в космосе",
+                features: ["Уникальный кит", "/heal", "/donate", "Космический чат"],
+                price: 199,
+                icon: "fa-star",
+                popular: false
+            },
+            {
+                id: 2,
+                title: "✦ Донат Illussion ✦",
+                description: "Полный доступ к галактике",
+                features: ["Всё из Cosmic", "/feed, /heal", "5 домов", "Цветной ник", "Доступ к /ec"],
+                price: 399,
+                icon: "fa-galaxy",
+                popular: true
+            },
+            {
+                id: 3,
+                title: "✧ Донат Kronos ✧",
+                description: "Властелин вселенной",
+                features: ["Всё из Galactic", "/gamemode", "10 домов", "Своя метка на карте", "Доступ к командам"],
+                price: 699,
+                icon: "fa-meteor",
+                popular: false
+            }
+        ];
+
+        // Моковая история покупок
+        const purchaseHistory = [
+            { date: "2026-02-28", product: "Галактический", amount: "399 ₽", status: "success" },
+            { date: "2026-02-15", product: "Космический", amount: "199 ₽", status: "success" }
+        ];
+
+        let currentUser = null;
+
+        // Функция регистрации по UID
+        function registerUID() {
+            const uid = document.getElementById('uidInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+
+            if (!uid) {
+                alert('Пожалуйста, введите ваш UID (никнейм)');
+                return;
+            }
+
+            if (uid.length > 16) {
+                alert('Никнейм не может быть длиннее 16 символов');
+                return;
+            }
+
+            if (!/^[a-zA-Z0-9_]+$/.test(uid)) {
+                alert('Никнейм может содержать только латинские буквы, цифры и символ подчеркивания');
+                return;
+            }
+
+            if (!email || !email.includes('@')) {
+                alert('Пожалуйста, введите корректный email');
+                return;
+            }
+
+            // Сохраняем пользователя
+            currentUser = { uid, email };
+            localStorage.setItem('minecraftUser', JSON.stringify(currentUser));
+            
+            // Обновляем интерфейс
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('serverContent').style.display = 'block';
+            document.getElementById('userInfo').style.display = 'flex';
+            document.getElementById('displayUid').textContent = uid;
+
+            // Загружаем товары
+            renderProducts();
+            
+            // Обновляем онлайн (рандом для демо)
+            document.getElementById('onlinePlayers').textContent = Math.floor(Math.random() * 100) + 50;
+        }
+
+        // Функция входа (для демо)
+        function showLogin() {
+            alert('В разработке. Используйте регистрацию.');
+        }
+
+        // Функция выхода
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('minecraftUser');
+            document.getElementById('authSection').style.display = 'block';
+            document.getElementById('serverContent').style.display = 'none';
+            document.getElementById('userInfo').style.display = 'none';
+            document.getElementById('uidInput').value = '';
+            document.getElementById('emailInput').value = '';
+        }
+
+        // Проверка сохраненной сессии
+        function checkSavedSession() {
+            const saved = localStorage.getItem('minecraftUser');
+            if (saved) {
+                currentUser = JSON.parse(saved);
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('serverContent').style.display = 'block';
+                document.getElementById('userInfo').style.display = 'flex';
+                document.getElementById('displayUid').textContent = currentUser.uid;
+                renderProducts();
+                document.getElementById('onlinePlayers').textContent = Math.floor(Math.random() * 100) + 50;
+            }
+        }
+
+        // Отрисовка товаров
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = `product-card ${product.popular ? 'popular' : ''}`;
+                
+                card.innerHTML = `
+                    <div class="product-icon">
+                        <i class="fas ${product.icon}"></i>
+                    </div>
+                    <div class="product-title">${product.title}</div>
+                    <div class="product-description">${product.description}</div>
+                    <ul class="product-features">
+                        ${product.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+                    </ul>
+                    <div class="product-price">${product.price} ₽</div>
+                    <button class="buy-btn" onclick="buyProduct(${product.id})" ${!currentUser ? 'disabled' : ''}>
+                        <i class="fas fa-shopping-cart"></i> Купить
+                    </button>
+                `;
+                
+                grid.appendChild(card);
             });
+        }
+
+        // Покупка товара
+        function buyProduct(productId) {
+            if (!currentUser) {
+                alert('Сначала войдите в систему');
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`Переход к оплате: ${product.title} - ${product.price} ₽\nВ реальном проекте здесь будет интеграция с EasyDonate API [citation:1]`);
+                // Здесь будет редирект на EasyDonate или вызов их API
+                // window.location.href = `https://easydonate.ru/shop/fa7695e644011d03adb1e3342daf1edd`; [citation:3]
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            checkSavedSession();
+            
+            // Для демо показываем историю
+            const historyBody = document.getElementById('historyTableBody');
+            if (purchaseHistory.length > 0) {
+                historyBody.innerHTML = purchaseHistory.map(item => `
+                    <tr>
+                        <td>${item.date}</td>
+                        <td>${item.product}</td>
+                        <td>${item.amount}</td>
+                        <td><span class="status-success">Выполнено</span></td>
+                    </tr>
+                `).join('');
+            }
         });
     </script>
 </body>
